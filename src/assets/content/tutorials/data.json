@@ -1,0 +1,21 @@
+[
+  {
+    "reference": "terraform_landing_zone",
+    "name": "Landing zone module",
+    "description": "Create a module to provisioning landing zone on Azure Cloud, all resources provisioned with Terraform (IaC).",
+    "content": "landing-zone.md",
+    "technologies": [
+      "Terraform", "Azure", "Shell Script"
+    ]
+  },
+  {
+    "reference": "virtual_network_landing_zone",
+    "name": "Network module",
+    "description": "Create a module to provisioning a virtual network to support personal laboratory. This tutorial will create three networks, with specific rules to control traffic between components.",
+    "content": "virtual-network.md",
+    "technologies": [
+      "Terraform", "Azure", "Shell Script", "Terraform states"
+    ]
+  }
+
+]

@@ -1,0 +1,20 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/background-home-1.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <markdown *ngIf="tutorialContent !== null" [data]="tutorialContent" class="content-tutorial">
+
+            </markdown>
+            <div *ngIf="tutorialContent === null && !notFound" class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div *ngIf="tutorialContent === null && notFound" role="status">
+                <h3 class="text-muted">Not found this tutorial :(</h3>
+                <br>
+                <a href="" [routerLink]="['/home']" class="btn btn-warning btn-round">Find tutorials</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/background-home-1.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <div class="card card-profile card-plain">
+                        <div class="card-avatar">
+                            <a href="#avatar"><img src="./assets/img/faces/profile-foto-1.jpg" alt="..."></a>
+                        </div>
+                        <div class="card-block">
+                            <a href="#paper-kit">
+                                <div class="author">
+                                    <h4 class="card-title">João André Simões</h4>
+                                    <h6 class="card-category">Chief Architect@NTT Data</h6>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="https://www.linkedin.com/in/joão-simões-bb7298100" class="btn btn-link btn-just-icon"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://github.com/jarpsimoes" class="btn btn-link btn-just-icon"><i class="fa fa-github"></i></a>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 ml-auto mr-auto text-center">
+                                <span *ngFor="let cert of contentCertifications" class="cert-span"><img class="cert-img" src="{{ cert.image }}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-12">
+                    <markdown class="markdown-content" *ngIf="!loading" [data]="contentString"></markdown>
+                    <hr />
+                    <div *ngFor="let certificates of contentCertifications" class="certifications">
+                        <h4><img class="image-credential" src="{{ certificates.image }}" />{{ certificates.vendor }}</h4>
+                        <hr />
+                        <div *ngFor="let certificatesList of certificates.certificates" class="row">
+                            <div class="col-md-2 col-sm-12">
+                                {{ certificatesList.code }}
+                            </div>
+                            <div class="col-md-10 col-sm-12">
+                                {{ certificatesList.name }}
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

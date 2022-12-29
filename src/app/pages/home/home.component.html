@@ -1,0 +1,121 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/background-home-1.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="section profile-content">
+        <div class="container">
+            <div class="owner">
+                <div class="avatar">
+                    <img src="./assets/img/faces/profile-foto-1.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                </div>
+                <div class="name">
+                    <h4 class="title"><b>João André Simões</b><br /><small>Chief Architect@NTT Data</small></h4>
+                    <h6 class="description">Cloud Architect - Solutions Architect - DevOps Architect</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                    <p>As a technology enthusiast, I really love work with most recent technologies, learn and understand witch newly tools can be resolve old issues. </p>
+                    <br />
+                    <!--<button class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i> Settings</button>-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                    <span *ngFor="let cert of certifications" class="cert-span"><img class="cert-img" src="{{ cert.image }}"></span>
+                </div>
+            </div>
+            <br />
+            <div class="row text-center">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                    <ngb-tabset #techContent [justify]="'center'">
+                        <ngb-tab *ngFor="let tech of technologies" [title]="tech.type">
+                            <ng-template ngbTabContent>
+                                <span *ngFor="let item of tech.tags" class="label label-{{ tech.color }}">{{ item }}</span>
+                            </ng-template>
+                        </ngb-tab>
+                    </ngb-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section laboratories">
+        <div class="container">
+            <div class="text-center">
+                <h3>Personal Laboratory</h3>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 justify-content-center">
+                <a [routerLink]="['/tutorial', tutorial.reference]" class="col mb-4 card-laboratory" *ngFor="let tutorial of tutorials">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ tutorial.name }}</h5>
+                            <p class="card-text">{{ tutorial.description }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <span *ngFor="let item of tutorial.technologies" class="label label-primary">{{ item }}</span>
+                        </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="section repositories">
+        <div class="container">
+            <div class="text-center">
+                <h3>Repositories</h3>
+            </div>
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <ngb-tabset [justify]="'center'">
+                        <ngb-tab title="Personal Projects">
+                            <ng-template ngbTabContent >
+                                <div class="row following" id="projects">
+                                    <div class="col-md-8 col-sm-12 ml-auto mr-auto">
+                                        <ul class="list-unstyled follows">
+                                            <li *ngFor="let project of projects">
+                                                <a [routerLink]="['/documentation/' + project.name]" href="">
+                                                    <div class="row">
+                                                        <div class="col-md-2 col-sm-2 ml-auto mr-auto">
+                                                            <img src="{{ project.list_image }}" alt="Circle Image" class="img-shadow img-circle img-no-padding img-responsive">
+                                                        </div>
+                                                        <div class="col-md-7 col-sm-4 ml-auto">
+                                                            <h6>{{ project.name }}<br/><small>{{ project.description }}</small></h6>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-2 ml-auto mr-auto">
+                                                            <h6><i class="fa fa-github"></i> GitHub</h6>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <hr />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab title="Laboratories">
+                            <ng-template ngbTabContent>
+                                <div class="row following" id="tutorials">
+                                    <div class="col-md-8 col-sm-12 ml-auto mr-auto">
+                                        <ul class="list-unstyled follows">
+                                            <li *ngFor="let tutorial of tutorials">
+                                                <a [routerLink]="['/tutorial', tutorial.reference]" href="">
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-sm-12 ml-auto">
+                                                            <h6>{{ tutorial.name }}<br/></h6>
+                                                            <span *ngFor="let item of tutorial.technologies" class="label label-primary">{{ item }}</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <hr />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+                    </ngb-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

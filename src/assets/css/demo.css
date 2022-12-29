@@ -12,6 +12,21 @@
 
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  */
+.markdown-content p {
+    margin-top: 20px;
+}
+.markdown-content h3 {
+    padding-top: 60px;
+}
+.content-tutorial h3 {
+    padding-top: 70px;
+}
+.profile-content .tab-content .tab-pane {
+    min-height: 80px;
+}
+.markdown-content strong {
+    color: #3b5998;
+}
 .tim-row {
     margin-bottom: 20px;
 }

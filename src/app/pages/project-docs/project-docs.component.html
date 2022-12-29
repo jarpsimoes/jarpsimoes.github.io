@@ -1,0 +1,12 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/background-home-1.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <markdown *ngIf="!loading" [data]="content_string">
+                {{ content_string }}
+            </markdown>
+        </div>
+    </div>
+</div>

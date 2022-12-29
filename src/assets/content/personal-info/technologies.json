@@ -1,0 +1,28 @@
+[
+  {
+    "type": "Development",
+    "color": "info",
+    "tags": [
+      "Java", "PHP", "C#", "C++", "NodeJS", "Javascript", "GoLang", "Python",
+      "Angular", "Native Script", "JHipster", "Spring Cloud", "Spring Boot", "Flask", "Quarkus",
+      "Oracle Webcenter Sites", "Websphere Portal"
+    ]
+  },
+  {
+    "type": "Technologies",
+    "color": "success",
+    "tags": [
+      "Terraform", "Ansible", "Kubernetes", "Docker", "Podman", "Git", "ELK", "Kafka", "ActiveMQ",
+      "Oracle Weblogic", "Wildfly", "Websphere Application Server", "Jenkins", "Gitlab-CI",
+      "Github Actions", "GoCD", "Azure Devops Pipelines", "Tekton", "CentOS", "MacOS", "Windows",
+      "RHEL", "RockyOS"
+    ]
+  },
+  {
+    "type": "Cloud Providers",
+    "color": "default",
+    "tags": [
+      "Azure", "AWS", "Oracle Cloud", "IBM Cloud"
+    ]
+  }
+]

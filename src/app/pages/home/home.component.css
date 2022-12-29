@@ -1,0 +1,33 @@
+.text-center {
+    text-align: center;
+}
+.cert-img {
+    width: 40px;
+}
+.cert-span {
+    display: inline;
+    margin-right: 20px;
+}
+.tab-pane {
+    min-height: 100px !important;
+}
+.section.profile-content {
+    padding-bottom: 10px;
+}
+.section.laboratories,
+.section.repositories {
+    padding: 20px 0;
+}
+.card-laboratory {
+    padding-top: 20px;
+}
+.card-laboratory .card {
+    height: 300px;
+    background: #c0c0c017;
+}
+.card-laboratory .card .card-text {
+    height: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
