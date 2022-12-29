@@ -16,6 +16,15 @@
     "technologies": [
       "Terraform", "Azure", "Shell Script", "Terraform states"
     ]
+  },
+  {
+    "reference": "aks_cluster",
+    "name": "Kubernetes Cluster Module [AKS]",
+    "description": "Create a module to provisioning a kubernetes cluster on Azure (AKS). This tutorial will allows to create kubernetes cluster ans install default tools by helm.",
+    "content": "kubernetes-environment.md",
+    "technologies": [
+      "Terraform", "Azure", "Shell Script", "Terraform states", "helm"
+    ]
   }
 
 ]
