@@ -1,23 +1,23 @@
 # Personal laboratory landing zone [AZURE]
 ###### **_Lab tutorial I_**
 ### Overview
-The cloud providers brought a capability to create environments by IaC
-(**I**nfrastructure **a**s **C**ode), that improvement it's really important when we
-change our infrastructure to cloud providers. Exist two most relevant approach's to
-use IaC:
+Cloud providers have brought the ability to create environments by IaC
+(**I**nfrastructure **a***s **C**ode), so that improvement really matters when we
+switch our infrastructure to cloud providers. The most relevant approaches to
+use IaC are two:
 
 - Cloud Provider API (CLI, ARM Templates, Plumia, etc)
 - Terraform
 
-Terraform it's a cross cloud provider language to provisioning and manage infrastructure,
-had some advantages, such a single language cross-platform, but the state control it's the
-feature really relevant.
+Terraform is a cross cloud provider language to provisioning and manage infrastructure, that
+has some advantages, such as single language cross-platform, but the state control is the
+really relevant feature.
 
 Terraform state allows all infrastructure components as code, and can be created, updated
 and deleted with changes on terraform files.
 
 ### 1. Requirements
-This tutorial requires some tools installed in host environment, will use Azure as a
+This tutorial requires that some tools be installed in host environment, that will use Azure as a
 cloud provider with CLI authentication and terraform:
 
 - Azure CLI: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
@@ -25,15 +25,15 @@ cloud provider with CLI authentication and terraform:
 
 ---
 **Notes**:
-- Must have an Azure Subscription with credits to perform that tutorial
+- Must have an Azure Subscription with credits to perform this tutorial
 - Should have a GitHub Account to store terraform modules and perform infra-structure updates
 ---
 
-After that tools are installed on environment, let's start.
+After those tools are installed on environment, let's start.
 
 ### 2. Create Project Structure
 
-The first step it's create project scaffold.
+The first step is to create project scaffold.
 
 Create structure:
 ```shell
