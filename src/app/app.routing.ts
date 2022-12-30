@@ -17,8 +17,6 @@ const routes: Routes =[
     { path: 'documentation/:id',    component: ProjectDocsComponent },
     { path: 'personal-info',        component: PersonalInfoComponent },
     { path: 'tutorial/:ref',        component: TutorialsComponent},
-    { path: 'signup',               component: SignupComponent },
-    { path: 'landing',              component: LandingComponent },
     { path: 'nucleoicons',          component: NucleoiconsComponent }
 ];
 
@@ -27,7 +25,8 @@ const routes: Routes =[
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes, {
-      useHash: true
+        useHash: false,
+        anchorScrolling: 'enabled'
     })
   ],
   exports: [
