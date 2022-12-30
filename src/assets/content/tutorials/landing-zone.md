@@ -2,9 +2,11 @@
 ###### **_Lab tutorial I_**
 ### Overview
 Cloud providers have brought the ability to create environments by IaC
-(**I**nfrastructure **a***s **C**ode), so that improvement really matters when we
-switch our infrastructure to cloud providers. The most relevant approaches to
-use IaC are two:
+(**I**nfrastructure **a***s **C**ode).
+This technology is very relevant when we are going to migrate infrastructure to the cloud
+because it allows us to maintain and evolve resources based on code with the ability of
+version control (eg GIT). The two most relevant technologies to
+use IaC are:
 
 - Cloud Provider API (CLI, ARM Templates, Plumia, etc)
 - Terraform
@@ -17,7 +19,7 @@ Terraform state allows all infrastructure components as code, and can be created
 and deleted with changes on terraform files.
 
 ### 1. Requirements
-This tutorial requires that some tools be installed in host environment, that will use Azure as a
+This tutorial requires some tools are installed in host environment, that will use Azure as a
 cloud provider with CLI authentication and terraform:
 
 - Azure CLI: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
@@ -29,7 +31,7 @@ cloud provider with CLI authentication and terraform:
 - Should have a GitHub Account to store terraform modules and perform infra-structure updates
 ---
 
-After those tools are installed on environment, let's start.
+After those tools are installed on environment, let's get started.
 
 ### 2. Create Project Structure
 
@@ -67,17 +69,17 @@ tf-modules
 
 ### 3. Create LANDING-ZONE-MODULE
 
-This is the simplest module, to be reach your target only needs to create a resource
+This is the simplest module. To reach your target, you only need to create a resource
 group with the selected name and a storage account with a container to be
 used as state storage for each of next components
 
 ---
 **Note**: In this example, that module will not have state control, but this isn't
-a right implementation. Will be used the Azure Resources to store states, then
-needs provide landing zone before are ready to save states.
+the right implementation. The Azure Resources are used to store states, then
+needs to provide landing zone before being ready to save states.
 ---
 
-Open file with your preferred IDE (such VS Code, Intellij, vim) and paste the following
+Open file with your preferred IDE (such as VS Code, Intellij, vim) and paste the following
 content:
 
 Create Resource Group:
@@ -123,10 +125,10 @@ resource "azurerm_storage_container" "state_container" {
 ```
 <sup>Docs: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_container
 
-Sometimes with must be use the results to another module, then it's a good practice return the most relevant data.
+Sometimes must be use the results to another module, and then it's a good practice to return the most relevant data.
 
-To support these module, should be declared some variables to configure module. When the variables are not
-mandatory should be defined a default value to be used.
+To support these module, some variables should be declared to configure the module. When the variables are not
+mandatory  a default value should be defined to be used.
 
 In variables.tf file, insert following lines:
 ```shell
@@ -159,7 +161,7 @@ variable "service_account_level" {
 }
 ```
 
-Create an Outputs:
+Create Outputs:
 ```yaml
 output "landing-zone-data" {
     value = {
@@ -171,7 +173,7 @@ output "landing-zone-data" {
 }
 ```
 
-This outputs can be used for example:
+These outputs can be used for example:
 
 ````yaml
 module "landing_zone" {
@@ -188,7 +190,7 @@ module "other_module" {
 
 ### 4. Test Module
 
-Before test this module, must be push the changes to the repository, or use the absolute path as a source.
+Before test this module, the changes must be pushed to the repository, or use the absolute path as a source.
 
 Create a folder named **example** and main.tf with following content:
 
@@ -221,7 +223,7 @@ module "landing-zone" {
 }
 ```
 
-Before test apply, should be need login on your Azure Tennant and set the subscription to be used.
+Before test apply, a login must be needed on your Azure Tennant and set the subscription to be used.
 
 ```shell
 $ az login # Will open your browser to login in your Tennant
@@ -234,7 +236,7 @@ Initialize Terraform environment on **example** folder:
 $ terraform init
 ```
 
-If this action has run with success, should be output something like this:
+If this action run with success, the output should be something like this:
 
 ```shell
 Initializing modules...
@@ -249,13 +251,13 @@ Initializing provider plugins...
 
 Terraform has been successfully initialized!
 
-You may now begin working with Terraform. Try running "terraform plan" to see
+You may now begin to work with Terraform. Try running "terraform plan" to see
 any changes that are required for your infrastructure. All Terraform commands
 should now work.
 
 If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
+rerun this command to reinitialize your working directory. If you forgot, other
+commands will detect it and remind you to do it, if necessary.
 ```
 After terraform initialized with success, needs to be applied to provisioning all components. Then will be run to 
 apply command:
@@ -274,7 +276,7 @@ var.name
 Must be defined a landing zone name, for example: operator-lab
 
 ```shell
-Terraform used the selected providers to generate the following execution plan.
+Terraform use the selected providers to generate the following execution plan.
 Resource actions are indicated with the following symbols:
   + create
 
@@ -306,8 +308,8 @@ Do you want to perform these actions?
   Enter a value: 
 ```
 ##
-When be accepted, all components will be created. This action could be during some minutes. The process had finished when 
-appear that message:
+When accepted, all components will be created. This action can last a few minutes. The process finish when 
+this message appear:
 
 ```shell
 Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
@@ -315,7 +317,7 @@ Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 
 ### 5. Destroy Landing Zone
 
-After all steps are finished, can be destroyed all components with command:
+After all steps are finished, you can destroy all components with the following command:
 
 ```shell
 $ terraform destroy

@@ -13,7 +13,7 @@ and Oracle Cloud.**
 
 As Architect, I worked with main paradigms such a monoliths, microservices 
 and cloud native applications. I've a DevOps focus, really believe in Developments 
-Teams with operations knowledge to allow their development and operate yours code.
+Teams with operations knowledge to allow their development and operate their code.
 
 
 This vision it's big challenge, because it not easy to have a development 
@@ -22,6 +22,6 @@ allow the teams to get knowledge and become independent.
 
 
 For me, the only difference between Java (or other development language) 
-and Terraform or Ansible it's only syntax, each of them it's a development language with 
+and Terraform or Ansible is only syntax, each of them are a development language with 
 different goals
 

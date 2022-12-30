@@ -21,7 +21,7 @@ This tutorial will expose how can create a kubernetes cluster on Azure (AKS) wit
 one cluster for each environment (Development and Production), and install default tools for each cluster by helm. 
 
 ### 1. Requirements
-This tutorial requires some tools installed in host environment, will use Azure as a
+This tutorial requires some tools are installed in host environment, that will use Azure as a
 cloud provider with CLI authentication and terraform:
 
 - Azure CLI: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
@@ -33,17 +33,16 @@ cloud provider with CLI authentication and terraform:
 - Must have an Azure Subscription with credits to perform that tutorial
 - Should have a GitHub Account to store terraform modules and perform infra-structure updates
 ---
-This tutorial it's a continuation of the Virtual Network tutorial
+This tutorial is a continuation of the Virtual Network tutorial
 
-<<<<<<< HEAD
 ### 2. Goals
-This module will have two submodules, the aks-generator module must be able to provide a Kubernetes Cluster with default
-nodes pool and should be possible add a node pool when required. The main configurations of kubernetes cluster (e.g.: 
-vm_size, node_pool_size, etc.) should be able to customize. The helm installer submodule should be able to receive a 
-list of helm charts, to be installed on the cluster when cluster are available.
+This module will have two submodules, the aks-generator module, that must be able to provide a Kubernetes Cluster with default
+nodes pool and, should be possible to add a node pool when required. The main configurations of kubernetes 
+cluster (e.g.: vm_size, node_pool_size, etc.) should be able to be customized. The helm installer submodule 
+should be able to receive a list of helm charts to be installed on the cluster when cluster are available.
 
 ### 3. Create Project Structure
-As the previous tutorial, the first step it's create project scaffold. Inside of folder tf-modules (used on the 
+As the previous tutorial, the first step is to create a project scaffold. Inside the folder tf-modules (used on the 
 previous project), should be created:
 
 ```shell
@@ -55,7 +54,7 @@ Create base files:
 $ touch kubernetes-cluster/main.tf kubernetes-cluster/variables.tf kubernetes-cluster/README.md
 ```
 
-As mentioned above, must be needs create two submodules and respective base files:
+As mentioned above, two submodules and respective base files needs to be created:
 ```shell
 $ mkdir kubernetes-cluster/aks-generator kubernetes-cluster/helm-installer
 $ touch kubernetes-cluster/aks-generator/main.tf kubernetes-cluster/aks-generator/variables.tf
@@ -78,20 +77,18 @@ tf-modules
     |-- variables.tf
     |-- README.md
 ```
-=======
 ## Overview
-This tutorial will expose how can create a kubernetes cluster on 
+This tutorial will expose how to create a kubernetes cluster on 
 Azure (AKS) with IaC (Terraform). Will be provisioned one cluster
-for each environment (Development and Production), and by default install 
+for each environment (Development and Production) and, by default, install 
 tools for each cluster. 
->>>>>>> feature/en-fix
 
 
 ### 4. Create kubernetes-cluster submodule
-On this submodule will be used **_azurerm_kubernetes_cluster_** ([official documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster)) and
+On this submodule is going to be used **_azurerm_kubernetes_cluster_** ([official documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster)) and
 **_azurerm_kubernetes_cluster_node_pool_** ([official documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster_node_pool)).
 
-Inside aks-generator/main.tf must be added following lines to create the cluster:
+Inside aks-generator/main.tf must be added the following lines to create the cluster:
 ```
 resource "azurerm_kubernetes_cluster" "cluster" {
     name = "${var.name}-${var.environment}"
@@ -127,8 +124,8 @@ resource "azurerm_kubernetes_cluster" "cluster" {
 }
 ```
 
-This module have support to the default node pool size, number of nodes, subnetwork and 
-containers network profile. With the following lines, will be possible add node pool:
+This module have support to the "default node pool" size, number of nodes, subnetwork and 
+containers network profile. With the following lines, will be possible to add node pool:
 
 ```
 resource "azurerm_kubernetes_cluster_node_pool" "node_pool" {
@@ -151,11 +148,11 @@ resource "azurerm_kubernetes_cluster_node_pool" "node_pool" {
 ```
 ---
 
-**NOTE**: This module will wait to the cluster are available
+**NOTE**: This module will wait until the cluster will be available
 
 ---
 
-As finally, should be returned the cluster data (after be available):
+Finally, should be returned the data of the cluster (after they are available):
 
 ```
 output "cluster_data" {
@@ -212,12 +209,12 @@ variable "additional_node_pool" {
 ```
 
 ### 5. Create helm-installer submodule
-The kubernetes cluster it's a common host used in a lot of applications types, dependent 
-of type, should be deployed a some  tools to support architecture. For example in 
-microservices applications, can be needed install Istio as an API Manager and as Ingress.
+The kubernetes cluster is a common host used in many applications types, depending
+the type, should be deployed some  tools to support architecture. For example in 
+microservices applications, can be needed to install Istio, as an API Manager and as Ingress.
 
-This module will support Helm Charts to install the default tools on the cluster, to do that
-will be used Terraform Helm Provider.
+This module will support Helm Charts to install the default tools on cluster, to do that, "Terraform Helm Provider"
+is the tool to use.
 
 On helm-install/main.tf must be added the following lines:
 ```
@@ -231,7 +228,7 @@ provider "helm" {
 }
 ```
 
-After created Helm provider, should be installed provided charts as variables:
+After Helm provider is created, should be installed provided charts as variables:
 ```
 resource "helm_release" "helm" {
     count = length(var.helm)
@@ -246,14 +243,14 @@ resource "helm_release" "helm" {
 ```
 
 ---
-**NOTE**: This module will have support to install a list of helm charts, as to be seen in  
+**NOTE**: This module will have support to install a list of helm charts, as can be seen in  
 ```count = length(var.helm)```. With that line, will be installed each module present as 
 variables.
 
 ---
 
 
-The variables file (helm-installer/variables.tf) must be declared the variables used:
+The variables file (helm-installer/variables.tf) must declare the variables used:
 
 ```
 variable "cluster" {
@@ -277,7 +274,7 @@ variable "helm" {
 ```
 
 ### 6. Create module wrapper
-To be finished that module, must be created the wrapper to be used. Then should be written 
+To finish that module, must be created the wrapper that is going be used. Then should be written 
 the following lines on main.tf at the root module:
 
 ```
@@ -377,7 +374,7 @@ variable "helm" {
 
 ### 7. Test module
 
-Create test to this module, in another folder insert de following lines on main.tf:
+Create test module: in another folder insert de following lines on main.tf:
 
 ```
 terraform {
@@ -442,7 +439,7 @@ module "aks" {
 }
 ```
 
-Then in root of test folder, must be run:
+Then in the root of test folder, must run:
 ```shell
 $ terraform init
 Initializing modules...
@@ -453,17 +450,17 @@ Initializing the backend...
 
 Terraform has made some changes to the provider dependency selections recorded
 in the .terraform.lock.hcl file. Review those changes and commit them to your
-version control system if they represent changes you intended to make.
+version control system if they represent the changes you intended to make.
 
 Terraform has been successfully initialized!
 
-You may now begin working with Terraform. Try running "terraform plan" to see
+You may now begin to work with Terraform. Try running "terraform plan" to see
 any changes that are required for your infrastructure. All Terraform commands
 should now work.
 
 If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
+rerun this command to reinitialize your working directory. If you forgot, other
+commands will detect it and remind you to do it, if necessary.
 
 $ terraform apply -auto-approve
 data.azurerm_subnet.subnet: Reading...
@@ -473,7 +470,7 @@ Plan: 3 to add, 0 to change, 0 to destroy.
 Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 ```
 
-At the end can be destroyed all resources with the following command:
+At the end all resources can be destroyed with the following command:
 ```shell
 $ terraform destroy -auto-approve
 Apply complete! Resources: 0 added, 0 changed, 3 destroyed.

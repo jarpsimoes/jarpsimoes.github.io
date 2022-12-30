@@ -16,11 +16,11 @@
 [6. Implementation](#6-implementation)
 
 ## Overview
-One of the most common requirement when will be change our infrastructure to the
-cloud, it's configure a virtual network to allows connections between 
-components and orchestrate these connections by rules. 
+One of the most common requirement when we want to change our infrastructure to the
+cloud, is to configure a virtual network to allow connections between 
+components and orchestrate these connections by rules.  
 
-All cloud providers has these components, with similar names. This tutorial will
+All cloud providers have these components, with similar names. This tutorial will
 provide the following components:
 - Network Security Group
 - Virtual Network
@@ -44,7 +44,7 @@ windows virtual machines network, production network)
 
 ##
 ### 1. Requirements
-This tutorial requires some tools installed in host environment, will use Azure as a
+This tutorial requires that some tools are installed in host environment, that will use Azure as a
 cloud provider with CLI authentication and terraform:
 
 - Azure CLI: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
@@ -60,7 +60,7 @@ This tutorial it's a continuation of the **_Personal laboratory landing zone_**
 
 ### 2. Create Project Structure
 
-As the previous tutorial, the first step it's create project scaffold. Inside of 
+As the previous tutorial, the first step is to create a project scaffold. Inside the 
 folder tf-modules (created on the previous project), should be created:
 
 ```shell
@@ -89,7 +89,7 @@ and _production_ subnets, both subnets will have similar rules;
 - vnet-generator-std: this module will create virtual network and apply respective nsg;
 - vnet-generator-shr: this module will create the shared network, subnets and apply respective nsg;
 
-Then will be need create that modules with following commands:
+Then need to create that modules with following commands:
 
 ```shell
 $ cd tf-modules/virtual-network
@@ -99,7 +99,7 @@ $ cp nsg-generator-std/*tf nsg-generator-shr
 $ cp nsg-generator-std/*tf vnet-generator-std
 $ cp nsg-generator-std/*tf vnet-generator-shr
 ```
-After this commands the structure should be like this:
+After this commands, the structure should look like this:
 ```
 tf-modules
 |-- virtual-network
@@ -122,7 +122,7 @@ tf-modules
 
 ### 3. Create Network Security Groups
 
-Before create the wrapper module, must be created submodules to provisioning Network Security Groups [NSG]. The _NSG_ it's a 
+Before creating the wrapper module, submodules must be created to provisioning Network Security Groups [NSG]. The _NSG_ is a 
 component to implement traffic rules for each network. The following steps will create each one:
 
 #### 3.1 Create module _nsg-generator-std_
@@ -603,9 +603,9 @@ resource "azurerm_network_security_group" "vnet_nsg_k8s" {
 
 ---
 
-The Terraform code, can be difficult to read if you don't have a declarative structure. 
-Then the sources should be separe by files and the files names with declarative name. 
-On that case, wil be used the most common naming in a lot of terraform modules:
+If you don't have a declarative structure, the Terraform code can be difficult to read . 
+Then the sources should be separated by files and the files names with a declarative name. 
+On that case, we'll use the most common naming in many of terraform modules:
 
 - Implementations: main.tf (or submodules when needed)
 - Variables: variables.tf
@@ -642,10 +642,10 @@ variable "location" {
 ```
 
 ##### Outputs:
-Will be need define outputs to orchestrate the component provisioning. When these modules are running, 
-the created components will have some auto generated data required for example to attach that NSG on Virtual Networks, 
-then must be created outputs to be used on following modules. On that example, will be returned the created NSG data, to 
-do this will be added on main.tf file the following lines:
+Will need to define outputs to orchestrate the component provisioning. When these modules are running, 
+the created components will have some auto generated data required, for example to attach that NSG on Virtual Networks, 
+then must create outputs to be used on following modules. On that example, will return the created NSG data, to 
+do this will add on main.tf file the following lines:
 
 ```
 output "linux_nsg" {
@@ -663,8 +663,8 @@ output "k8s_nsg" {
 
 #### 3.2 Create module _nsg-generator-shr_
 
-In a lot of architectures, can be needed a network with high privileges to be used as 
-a host to the components with full access for each environment (on this case production and development).
+In a lot of architectures, might need a network with high privileges to use as 
+a host to the components with full access by each environment (on this case production and development).
 The **Shared Network** should be covered that requirements.
 
 These network will have two subnetworks with rules to support windows and linux environments.
@@ -834,7 +834,7 @@ variable "env" {
 ```
 
 ##### Outputs:
-As the previous module, will be need implement outputs with the same logic:
+As the previous module, we'll need to implement outputs with the same logic:
 ```
 output "shared_nsg" {
     value = azurerm_network_security_group.vnet_nsg_shared
@@ -845,11 +845,11 @@ output "shared_nsg" {
 
 ### 4. Create Virtual Networks
 
-This architecture (present on top of this tutorial) require three networks, one for each environment (development and production) 
-and the shared network. Each environment networks will have three subnetworks to be a host for virtual machines Windows, 
-Linux and Kubernetes Cluster. All subnetwork will have attached a NSG. 
+This architecture (present on top of this tutorial) requires three networks, one for each environment (development and production) 
+and the shared network. Each environment network will have three subnetworks to be a host for virtual machines Windows, 
+Linux and Kubernetes Cluster. All subnetwork will have an NSG attached. 
 
-To reach that target architecture will be created two modules, one module to create environment virtual networks (prod and dev) and another to
+To reach this target architecture, two modules are going to be created, one to create environment virtual networks (prod and dev) and another to
 create shared network.
 
 #### 4.1 Environment Virtual Networks
@@ -1000,8 +1000,8 @@ variable "name" {
 ```
 ### 5. Wrapper
 
-After all submodules are created, will be need create a wrapper to be used. That wrapper will orchestrate all resources related to the networks,
-to use this module will create:
+After all submodules are created, we'll need to create a wrapper to be used. That wrapper will orchestrate all the resources related to the networks,
+to use this module, we are going to create:
 
 **_(Add following lines on main.tf at the root of that project)_**
 - **NSG-Development**
@@ -1157,14 +1157,14 @@ variable "subnets" {
 
 ---
 
-The outcome of previous tasks are stored on this [repository](https://github.com/jarpsimoes/tf-modules)
+The outcome of the previous tasks are stored on this [repository](https://github.com/jarpsimoes/tf-modules)
 
 ---
 ### 6. Implementation
 
-The main goal of utilisation terraform module, it's a re-utilizable code. Modules should be generic to be used in another
+The main goal of using terraform module, is a re-utilizable code. Modules should be generic to be used in another
 implementations. The sources of modules can be stored in git repository, then on **source** option, inside module block
-should be written the git url:
+should write the git url:
 
 #### 6.1 Create main.tf
 ```
@@ -1218,13 +1218,13 @@ $ terraform init
 (...)
 Terraform has been successfully initialized!
 
-You may now begin working with Terraform. Try running "terraform plan" to see
+You may now begin to work with Terraform. Try running "terraform plan" to see
 any changes that are required for your infrastructure. All Terraform commands
 should now work.
 
 If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
+rerun this command to reinitialize your working directory. If you forgot, other
+commands will detect it and remind you to do it, if necessary.
 ```
 
 Apply infrastructure
