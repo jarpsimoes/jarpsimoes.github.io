@@ -1,0 +1,76 @@
+[
+  {
+    "vendor": "Microsoft",
+    "image": "assets/img/microsoft.jpeg",
+    "certificates":[
+      {
+        "code": "AZ-900",
+        "name": "Azure Fundamentals"
+      },
+      {
+        "code": "AZ-104",
+        "name": "Azure Administrator Associate"
+      },
+      {
+        "code": "AZ-400",
+        "name": "Azure Devops Engineer Expert"
+      }
+    ]
+  },
+  {
+    "vendor": "AWS",
+    "image": "assets/img/aws.jpeg",
+    "certificates":[
+      {
+        "code": "AWS",
+        "name": "Cloud Practitioner Essentials"
+      },
+      {
+        "code": "AWS",
+        "name": "Architecting on AWS"
+      }
+    ]
+  },
+  {
+    "vendor": "Red Hat",
+    "image": "assets/img/redhat.jpeg",
+    "certificates":[
+      {
+        "code": "RHCSA",
+        "name": "Red Hat Certified System Administrator (RHEL 8)"
+      },
+      {
+        "code": "RHCE",
+        "name": "Red Hat Certified Engineer (Ansible Automation)"
+      }
+    ]
+  },
+  {
+    "vendor": "International DevOps Certification Academy",
+    "image": "assets/img/devops_academy.jpeg",
+    "certificates":[
+      {
+        "code": "DevOps",
+        "name": "Architect"
+      },
+      {
+        "code": "DevOps",
+        "name": "Generalist"
+      },
+      {
+        "code": "DevOps",
+        "name": "Operations Engineer"
+      }
+    ]
+  },
+  {
+    "vendor": "Instituto de Emprego e Formação Profissional",
+    "image": "assets/img/iefp.jpeg",
+    "certificates": [
+      {
+        "code": "CAP",
+        "name": "Teaching Aptitude Certificates"
+      }
+    ]
+  }
+]
