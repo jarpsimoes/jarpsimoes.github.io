@@ -35,6 +35,7 @@ cloud provider with CLI authentication and terraform:
 ---
 This tutorial it's a continuation of the Virtual Network tutorial
 
+<<<<<<< HEAD
 ### 2. Goals
 This module will have two submodules, the aks-generator module must be able to provide a Kubernetes Cluster with default
 nodes pool and should be possible add a node pool when required. The main configurations of kubernetes cluster (e.g.: 
@@ -77,6 +78,13 @@ tf-modules
     |-- variables.tf
     |-- README.md
 ```
+=======
+## Overview
+This tutorial will expose how can create a kubernetes cluster on 
+Azure (AKS) with IaC (Terraform). Will be provisioned one cluster
+for each environment (Development and Production), and by default install 
+tools for each cluster. 
+>>>>>>> feature/en-fix
 
 
 ### 4. Create kubernetes-cluster submodule
